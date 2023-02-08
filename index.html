@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive rating component</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="main.js" defer></script>
+</head>
+<body>
+
+  <main>
+    <div class="container">
+      <!-- Rating state start -->
+      <div class="card js-card-rating">
+        <div aria-hidden="true" class="card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"/></svg>
+        </div>
+        <div>
+          <h1 class="title">How did we do?</h1>
+          <p class="text">Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+        </div>
+
+        <form class="rank">
+          <label for="rank-1" class="rank__item">
+            <span class="sr-only">Rank your experience with note 1</span>
+            <input type="radio" name="rank" id="rank-1" value="1" class="hidden js-card-rating-item">
+          </label>
+          <label for="rank-2" class="rank__item">
+            <span class="sr-only">Rank your experience with note 2</span>
+            <input type="radio" name="rank" id="rank-2" value="2" class="hidden js-card-rating-item">
+          </label>
+          <label for="rank-3" class="rank__item">
+            <span class="sr-only">Rank your experience with note 3</span>
+            <input type="radio" name="rank" id="rank-3" value="3" class="hidden js-card-rating-item">
+          </label>
+          <label for="rank-4" class="rank__item">
+            <span class="sr-only">Rank your experience with note 4</span>
+            <input type="radio" name="rank" id="rank-4" value="4" class="hidden js-card-rating-item">
+          </label>
+          <label for="rank-5" class="rank__item">
+            <span class="sr-only">Rank your experience with note 5</span>
+            <input type="radio" name="rank" id="rank-5" value="5" class="hidden js-card-rating-item">
+          </label>
+        </form>
+
+        <button class="btn" onclick="cardSubmit()">Submit</button>
+      </div>
+
+      <!-- Thank you state start -->
+      <div class="card card--center card-thanks hidden js-card-thanks">
+        <picture>
+          <img class="card__img" src="images/illustration-thank-you.svg" alt="Receipt ilustration">
+        </picture>
+        <div class="rating">
+          <p>You selected <span class="js-card-note"></span> out of 5</p>
+        </div>
+        <div>
+          <h1 class="title">Thank you!</h1>
+          <p class="text">We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Atrribution start -->
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="external">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/Guidll" target="_blank" rel="external">@Guidll</a>.
+  </div>
+</body>
+</html>

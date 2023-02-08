@@ -1,0 +1,226 @@
+@import url(./css/reset.css);
+
+:root {
+  /* colors - hsl pathern */
+  --clr-accent: 25, 97%, 53%;
+  --clr-neutral-100: 0, 0%, 100%;
+  --clr-neutral-200: 217, 12%, 63%;
+  --clr-neutral-300: 216, 12%, 54%;
+  --clr-neutral-700: 213, 19%, 15%;
+  --clr-neutral-800: 213, 19%, 10%;
+  --clr-neutral-900: 216, 12%, 8%;
+}
+
+/* --------------------- */
+/* ----- utilities ----- */
+/* --------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+/* ------------------ */
+/* ----- layout ----- */
+/* ------------------ */
+body {
+  color: hsl(var(--clr-neutral-200));
+  background-color: hsl(var(--clr-neutral-900));
+  font-family: 'Overpass', sans-serif;
+  font-weight: 400;
+  gap: 1rem;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* ---------------- */
+/* ----- card ----- */
+/* ---------------- */
+.card {
+  background-image: linear-gradient(
+    to bottom left,
+    hsl(var(--clr-neutral-700)),
+    hsl(var(--clr-neutral-800))
+  );
+  display: grid;
+  border-radius: 1rem;
+  gap: 1.25rem;
+  max-width: 320px;
+  padding: 2rem;
+  transition: max-width 200ms ease-in-out;
+}
+.card--center {
+  text-align: center;
+}
+
+@media (min-width: 800px) {
+  .card {
+    gap: 1.5rem;
+    max-width: 375px;
+  }  
+}
+
+.card__icon {
+  aspect-ratio: 1/1;
+  background-color: hsl(var(--clr-neutral-300), 0.3);
+  border-radius: 50%;
+  display: grid;
+  height: 2.5rem;
+  place-items: center;
+}
+.card__icon svg {
+  color: hsl(var(--clr-accent));
+  border-radius: 50%;
+  height: 1.25rem;
+}
+
+.card__img {
+  margin-inline: auto;
+}
+
+/* card content */
+.title {
+  color: hsl(var(--clr-neutral-100));
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.text {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.rating p {
+  color: hsl(var(--clr-accent));
+  background-color: hsl(var(--clr-neutral-300), 0.1);
+  border-radius: 50vw;
+  font-size: 0.875rem;
+  max-width: max-content;
+  margin-inline: auto;
+  padding: 0.25rem 1rem;
+}
+
+/* user rank */
+.rank {
+  counter-reset: rank;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.rank__item {
+  background-color: hsl(var(--clr-neutral-300), 0.3);
+  border-radius: 50%;
+  display: grid;
+  padding: 1.25rem;
+  place-content: center;
+  position: relative;
+  transition:
+    background-color 200ms ease-in-out,
+    color 100ms linear;
+}
+.rank__item:where(:hover, :focus) {
+  background-color: hsl(var(--clr-neutral-200));
+}
+.rank__item:has(input:checked) {
+  background-color: hsl(var(--clr-accent));
+}
+
+.rank__item::before {
+  content: counter(rank);
+  counter-increment: rank;
+  font-size: 0.875rem;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%) translateX(-50%);
+}
+.rank__item:where(:hover, :focus)::before,
+.rank__item:has(input:checked)::before {
+  color: hsl(var(--clr-neutral-100));
+}
+
+/* btn */
+.btn {
+  background-color: hsl(var(--clr-accent));
+  border-radius: 50vw;
+  border: none;
+  color: hsl(var(--clr-neutral-100));
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition:
+    background-color 250ms ease-in-out,
+    color 250ms ease-in-out;
+}
+.btn:where(:hover, :focus) {
+  color: hsl(var(--clr-accent));
+  background-color: hsl(var(--clr-neutral-100));
+}
+
+/* ----------------------- */
+/* ----- attribution ----- */
+/* ----------------------- */
+.attribution {
+  bottom: 2rem;
+  font-size: 11px;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 100%;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* -------------------------- */
+/* ----- card animation ----- */
+/* -------------------------- */
+.card-thanks {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-off {
+  animation: slideOff 500ms ease-in-out forwards;
+}
+
+@keyframes slideOff {
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.slide-in {
+  animation: slideIn 500ms ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
